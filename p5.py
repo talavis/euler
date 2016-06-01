@@ -27,3 +27,5 @@ What is the smallest positive number that is evenly divisible by all of the numb
 
 #the sum should be the product of the highest occurence of each factor, e.g.:
 #2*2*2*2*3*3*5*7*11*13*17*19
+
+print(2*2*2*2*3*3*5*7*11*13*17*19)
