@@ -9,10 +9,10 @@ Evaluate the sum of all the amicable numbers under 10000.'''
 
 import math
 
-def get_divs(value) :
+def get_divs(value):
     divs = [1]
-    for d in range(2, int(math.sqrt(value))) :
-        if value % d == 0 :
+    for d in range(2, math.ceil(value**0.5)):
+        if value % d == 0:
             divs.append(d)
             divs.append(value//d)
     return set(divs)
