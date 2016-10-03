@@ -4,4 +4,4 @@ These are my solutions to the problems at [Project Euler](https://projecteuler.n
 
 My main programming language is Python 3.
 
-![Euler Status](https://projecteuler.net/profile/telavis.png)
+[![Euler Status](https://projecteuler.net/profile/telavis.png)](https://projecteuler.net/profile/telavis.png)
