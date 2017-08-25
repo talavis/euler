@@ -13,48 +13,30 @@ How many different ways can one hundred be written as a sum of at
 least two positive integers?
 '''
 
-def gen_sumways(num):
+
+def calc_ways(num):
     '''
-    Generate a list of the ways num can be written as a sum of
-    positive digits.
-    Generates all permutations
+    Calculate the number of ways to write num as a sum of at least
+    two positive integers
     '''
-    ways = list()
-    if num == 0:
-        return [[]]
-    if num == 1:
-        return [[1]]
-    for i in range(num, 0, -1):
-        ways += [[i] + comb for comb in gen_sumways(num-i)]
+    ways = [0]*(num+1)
+    ways[0] = 1
 
-    return ways
+    for i in range(1, num):
+        for j in range(i, num+1):
+            ways[j] += ways[j - i]
+
+    return ways[-1]
 
 
-def test_gen_sumways():
+def test_calc_ways():
     '''
-    Test count_sumways()
+    Test calc_ways()
     '''
-    expected = [[5], [4, 1], [3, 2], [3, 1, 1], [2, 3], [2, 2, 1],
-                [2, 1, 2], [2, 1, 1, 1], [1, 4], [1, 3, 1],
-                [1, 2, 2], [1, 2, 1, 1], [1, 1, 3], [1, 1, 2, 1],
-                [1, 1, 1, 2], [1, 1, 1, 1, 1]]
-    assert gen_sumways(5) == expected
+    assert calc_ways(5) == 6
+    assert calc_ways(2) == 1
+    assert calc_ways(6) == 10
 
 
-def evaluate(ways):
-    '''
-    Only keep a single copy of each combination
-    Remove the single-number combination
-    '''
-    ways = [way for way in ways if len(way) > 1]
-    return len(set(tuple(sorted(way)) for way in ways))
-
-
-def test_evaluate():
-    '''
-    Test evaluate()
-    '''
-    assert evaluate(gen_sumways(5)) == 6
-
-
-print(evaluate(gen_sumways(100)))
+if __name__ == '__main__':
+    print(calc_ways(100))
